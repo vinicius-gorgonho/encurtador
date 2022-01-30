@@ -21,7 +21,9 @@ app.get('/clientes', (req, res, next) => {
     console.log("Retornoou os clientes");
     res.json([{id: 1, nome: 'vinicius'}]);
 });
-
+app.get('/', (req, res, next) => {
+    res.json([{"message": "API Em execução"}]);
+});
 // um método de encurtar uma URL persistindo-a no banco de dados. - ok
 /**
  * @swagger
