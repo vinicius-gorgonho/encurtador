@@ -1,0 +1,3 @@
+# encurtador
+
+Métodos revisados.
