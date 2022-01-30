@@ -23,6 +23,13 @@ app.get('/clientes', (req, res, next) => {
 });
 
 // um método de encurtar uma URL persistindo-a no banco de dados. - ok
+/**
+ * @swagger
+ * /encurtar:
+ *   post:
+ *     summary: um método de encurtar uma URL
+ *     description: Encurta url e salva no banco.
+*/
 app.post('/encurtar',jsonParser, (req, res, next) => {
 
   console.log(req.body);
@@ -41,10 +48,16 @@ app.post('/encurtar',jsonParser, (req, res, next) => {
     res.status(200).json({  message: 'Salvo com sucesso'})
   );
 
-
 });
 
 // um método que retorna uma url encurtada conforme um id. - ok
+/**
+ * @swagger
+ * /getPorID:
+ *   get:
+ *     summary: um método retorna uma url encurtada conforme um id
+ *     description: Ao enviar o id, o método devolve a url.
+*/
 app.get('/getPorID', (req, res, next) => {
  
 const id =  req.query.id;
@@ -57,6 +70,13 @@ conexao.gerPorID(id).then( function(data){
 });
 //um método que retorna todas as URLs encurtadas em uma data específica. -ok
 // formato da data - 2022-01-29
+/**
+ * @swagger
+ * /listarURLPorData:
+ *   post:
+ *     summary: método que retorna todas as URLs encurtadas em uma data específica.
+ *     description: Ao enviar a data no formato 2022-01-29, método devolve todas as url cadastradas na data.
+*/
 app.post('/listarURLPorData', (req, res, next) => {
 
 const dataURL =  req.body.dataURL;
@@ -67,7 +87,15 @@ conexao.gerPorData(dataURL).then( function(data){
 );
 
 });
+
 //um método que retorna uma url original conforme o encurtamento da URL.
+/**
+ * @swagger
+ * /getURLOriginal:
+ *   get:
+ *     summary: método que retorna uma url original conforme o encurtamento da URL.
+ *     description: Método devolve a url cadastrada de acordo com o encurtamento.
+*/
 app.get('/getURLOriginal', (req, res, next) => {
   const urlEncurtada =  req.query.url;
   console.log(urlEncurtada);
@@ -126,7 +154,7 @@ const options = {
         },
       ],
     },
-    apis: ["./routes/books.js"],
+    apis: ["./*.js"],
   };
 
 const specs = swaggerJSDoc(options);
