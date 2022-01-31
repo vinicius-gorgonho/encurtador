@@ -1,3 +1,3 @@
 # encurtador
 
-Métodos revisados e documentação realizada.
+Métodos revisados e documentacao realizada.
